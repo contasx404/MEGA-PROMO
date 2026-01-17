@@ -1,3 +1,4 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
@@ -20,20 +21,33 @@ body {
   border-radius: 20px;
   padding: 30px;
   max-width: 420px;
-  width: 100%;
+  width: 95%;
   text-align: center;
   animation: fadeIn 1.2s ease;
 }
 
-.Video-mega promo video {
- width: 100%;
-  max-width: 600px;
+/* Vídeo responsivo */
+.video-mega-promo video {
+  width: 100%;          /* ocupa toda a largura da container */
+  max-width: 100%;      /* não ultrapassa a largura disponível */
+  height: auto;         /* mantém proporção */
   display: block;
-  margin: 0 auto;
-  border-radius: 12px; /* opcional */
+  margin: 20px auto;
+  border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  object-fit: cover;    /* mantém o vídeo proporcional sem distorcer */
+  opacity: 0;
+  animation: fadeIn 1s forwards;
 }
 
+/* Impede que o vídeo abra em tela cheia no mobile */
+video {
+  -webkit-playsinline: true;
+  playsinline: true;
+  touch-action: manipulation;
+}
+
+/* Títulos e textos */
 .title {
   font-size: 1.8rem;
   margin-bottom: 10px;
@@ -45,6 +59,7 @@ body {
   margin-bottom: 25px;
 }
 
+/* Botões */
 .buttons {
   display: flex;
   flex-direction: column;
@@ -74,12 +89,14 @@ body {
   color: #fff;
 }
 
+/* Rodapé */
 .footer {
   margin-top: 20px;
   font-size: 0.85rem;
   opacity: 0.7;
 }
 
+/* Animações */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -89,15 +106,4 @@ body {
   0% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
   100% { transform: translateY(0); }
-}
-
-.video-mega promo video {
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
 }
