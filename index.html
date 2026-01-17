@@ -5,37 +5,66 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thank You – Mega Promo</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+  <div class="confetti-container"></div>
+  
   <div class="container">
-   <video autoplay muted loop playsinline>
-  <source src="videos/mega promo video.mp4" type="video/mp4">
-  Your browser does not support videos.
-</video>
+    <div class="header-glow"></div>
+    
+    <!-- Container do vídeo -->
+    <div class="video-mega-promo">
+      <video autoplay muted loop playsinline>
+        <source src="videos/mega promo video.mp4" type="video/mp4">
+        Your browser does not support videos.
+      </video>
+      <div class="video-overlay"></div>
+    </div>
 
-    <h1 class="title">🎉 Thank You for Your Purchase!</h1>
+    <h1 class="title">
+      <span class="title-text">🎉 Thank You for Your Purchase!</span>
+      <div class="title-shine"></div>
+    </h1>
 
     <p class="subtitle">
-      Your <strong>MEGA PROMO PACKAGE</strong> is ready for delivery.
+      Your <strong class="highlight-text">MEGA PROMO PACKAGE</strong> is ready for delivery.
     </p>
 
     <div class="buttons">
       <a href="https://t.me/GetYourFoldersHere10_14"
          target="_blank"
-         class="btn telegram">
-        💬 Telegram Support
+         class="btn telegram premium-btn">
+        <div class="btn-inner">
+          <i class="fab fa-telegram-plane btn-icon"></i>
+          <span class="btn-text">Telegram Support</span>
+          <div class="btn-shine"></div>
+          <div class="btn-sparkle"></div>
+        </div>
+        <div class="btn-glow"></div>
       </a>
 
       <a href="#"
-         class="btn get-package"
-         onclick="getPackage()">
-        🎁 Click here to get your package
+         class="btn get-package premium-btn pulse-animation">
+        <div class="btn-inner">
+          <i class="fas fa-gift btn-icon"></i>
+          <span class="btn-text">Get Your Package Now</span>
+          <div class="btn-shine"></div>
+          <div class="btn-sparkle"></div>
+        </div>
+        <div class="btn-glow"></div>
       </a>
     </div>
 
     <p class="footer">
-      If you have any questions, our support team is available 24/7.
+      <i class="fas fa-headset"></i> If you have any questions, our support team is available 24/7.
     </p>
+    
+    <div class="decoration">
+      <div class="star star-1"></div>
+      <div class="star star-2"></div>
+      <div class="star star-3"></div>
+    </div>
   </div>
 
   <script src="script.js"></script>
