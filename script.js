@@ -1,194 +1,189 @@
-function getPackage() {
-  const btn = document.querySelector('.get-package');
-  const btnInner = btn.querySelector('.btn-inner');
+// Criar partículas de fundo
+function createParticles() {
+  const container = document.querySelector('.particles');
+  const colors = ['#229ED9', '#1a73b8', '#25D366', '#FFFFFF'];
   
-  // Efeito visual de clique
-  btn.style.transform = 'translateY(-2px) scale(0.95)';
-  btnInner.innerHTML = `
-    <div class="btn-loading">
-      <div class="spinner"></div>
-      <span class="btn-text">Preparing Your Package...</span>
-    </div>
-  `;
+  // Limpar partículas existentes
+  container.innerHTML = '';
   
-  // Criar efeito de partículas
-  createClickParticles(btn);
-  
-  // Redirecionar após delay
-  setTimeout(() => {
-    window.location.href = "https://t.me/GetYourFoldersHere10_14?start=MegaPromo";
-  }, 1200);
-}
-
-// Criar partículas para efeito de clique
-function createClickParticles(element) {
-  const rect = element.getBoundingClientRect();
-  const centerX = rect.left + rect.width / 2;
-  const centerY = rect.top + rect.height / 2;
-  
-  for (let i = 0; i < 15; i++) {
+  for (let i = 0; i < 30; i++) {
     const particle = document.createElement('div');
-    particle.style.position = 'fixed';
-    particle.style.width = '8px';
-    particle.style.height = '8px';
+    
+    // Tamanho aleatório
+    const size = Math.random() * 4 + 1;
+    particle.style.width = `${size}px`;
+    particle.style.height = `${size}px`;
+    
+    // Posição aleatória
+    particle.style.left = `${Math.random() * 100}vw`;
+    particle.style.top = `${Math.random() * 100}vh`;
+    
+    // Cor aleatória
+    particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    particle.style.opacity = Math.random() * 0.6 + 0.2;
     particle.style.borderRadius = '50%';
-    particle.style.background = i % 2 === 0 ? '#25D366' : '#229ED9';
-    particle.style.left = `${centerX}px`;
-    particle.style.top = `${centerY}px`;
+    particle.style.position = 'fixed';
     particle.style.pointerEvents = 'none';
-    particle.style.zIndex = '1000';
-    particle.style.boxShadow = '0 0 10px currentColor';
+    particle.style.zIndex = '1';
     
-    document.body.appendChild(particle);
+    // Velocidade de animação aleatória
+    const duration = Math.random() * 20 + 10;
+    const delay = Math.random() * 5;
     
-    // Animar partícula
-    const angle = Math.random() * Math.PI * 2;
-    const speed = 2 + Math.random() * 3;
-    const distance = 50 + Math.random() * 100;
+    // Animar movimento
+    particle.style.animation = `
+      float ${duration}s infinite linear ${delay}s,
+      pulse ${duration / 2}s infinite ease-in-out ${delay}s
+    `;
     
-    const animation = particle.animate([
-      { 
-        transform: 'translate(0, 0) scale(1)', 
-        opacity: 1 
-      },
-      { 
-        transform: `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`, 
-        opacity: 0 
-      }
-    ], {
-      duration: 800 + Math.random() * 400,
-      easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)'
-    });
-    
-    animation.onfinish = () => particle.remove();
+    container.appendChild(particle);
   }
 }
 
-// Criar confetti
-function createConfetti() {
-  const container = document.querySelector('.confetti-container');
-  const colors = ['#25D366', '#229ED9', '#FFD700', '#FF6B6B', '#A8E6CF'];
+// Efeito de clique no botão
+function setupButtonEffects() {
+  const btn = document.querySelector('.telegram-btn');
   
-  for (let i = 0; i < 50; i++) {
-    const confetti = document.createElement('div');
-    confetti.style.position = 'fixed';
-    confetti.style.width = `${Math.random() * 10 + 5}px`;
-    confetti.style.height = confetti.style.width;
-    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-    confetti.style.left = `${Math.random() * 100}vw`;
-    confetti.style.top = '-20px';
-    confetti.style.opacity = '0.9';
-    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
-    confetti.style.boxShadow = '0 0 5px currentColor';
+  btn.addEventListener('click', function(e) {
+    // Efeito visual de clique
+    this.style.transform = 'scale(0.95)';
     
-    container.appendChild(confetti);
+    // Adicionar efeito de "splash"
+    createClickEffect(e.clientX, e.clientY);
     
-    // Animar confetti
-    const animation = confetti.animate([
-      { 
-        transform: `translate(0, 0) rotate(0deg)`, 
-        opacity: 1 
-      },
-      { 
-        transform: `translate(${Math.random() * 100 - 50}px, 100vh) rotate(${Math.random() * 720}deg)`, 
-        opacity: 0 
-      }
-    ], {
-      duration: 3000 + Math.random() * 2000,
-      delay: Math.random() * 1000,
-      easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)'
-    });
-    
-    animation.onfinish = () => confetti.remove();
-  }
-}
-
-// Adicionar efeitos de brilho aleatório nos botões
-function addButtonSparkles() {
-  const buttons = document.querySelectorAll('.premium-btn');
+    // O link já redireciona diretamente para o Telegram
+    // Nenhum redirecionamento manual necessário
+  });
   
-  buttons.forEach(btn => {
-    setInterval(() => {
-      if (Math.random() > 0.7) { // 30% de chance de criar brilho
-        const sparkle = document.createElement('div');
-        sparkle.className = 'btn-sparkle';
-        
-        const rect = btn.getBoundingClientRect();
-        sparkle.style.left = `${Math.random() * rect.width}px`;
-        sparkle.style.top = `${Math.random() * rect.height}px`;
-        
-        btn.querySelector('.btn-inner').appendChild(sparkle);
-        
-        // Animar e remover brilho
-        const animation = sparkle.animate([
-          { opacity: 0, transform: 'scale(0)' },
-          { opacity: 1, transform: 'scale(1)' },
-          { opacity: 0, transform: 'scale(0)' }
-        ], {
-          duration: 800,
-          easing: 'ease-out'
-        });
-        
-        animation.onfinish = () => sparkle.remove();
-      }
-    }, 1000);
+  btn.addEventListener('mousedown', function() {
+    this.style.transform = 'scale(0.95)';
+  });
+  
+  btn.addEventListener('mouseup', function() {
+    this.style.transform = 'translateY(-5px) scale(1.03)';
+  });
+  
+  btn.addEventListener('mouseleave', function() {
+    this.style.transform = '';
   });
 }
 
-// Inicializar efeitos quando a página carregar
-document.addEventListener('DOMContentLoaded', function() {
-  // Criar confetti inicial
-  setTimeout(createConfetti, 500);
-  setTimeout(createConfetti, 1500);
+// Criar efeito de clique
+function createClickEffect(x, y) {
+  const effect = document.createElement('div');
+  effect.style.position = 'fixed';
+  effect.style.left = `${x}px`;
+  effect.style.top = `${y}px`;
+  effect.style.width = '0';
+  effect.style.height = '0';
+  effect.style.borderRadius = '50%';
+  effect.style.background = 'radial-gradient(circle, rgba(34,158,217,0.8) 0%, transparent 70%)';
+  effect.style.pointerEvents = 'none';
+  effect.style.zIndex = '1000';
+  effect.style.transform = 'translate(-50%, -50%)';
   
-  // Adicionar efeitos de brilho nos botões
-  addButtonSparkles();
+  document.body.appendChild(effect);
   
-  // Adicionar efeitos de toque para mobile
-  if ('ontouchstart' in window) {
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-      btn.addEventListener('touchstart', function() {
-        this.style.transform = 'translateY(-3px) scale(1.02)';
-      });
+  // Animar expansão
+  const animation = effect.animate([
+    { width: '0', height: '0', opacity: 1 },
+    { width: '200px', height: '200px', opacity: 0 }
+  ], {
+    duration: 600,
+    easing: 'ease-out'
+  });
+  
+  animation.onfinish = () => effect.remove();
+}
+
+// Adicionar efeitos de brilho aleatório
+function addRandomSparkles() {
+  const btn = document.querySelector('.telegram-btn');
+  const sparklesContainer = btn.querySelector('.btn-sparkles');
+  
+  setInterval(() => {
+    if (Math.random() > 0.7) {
+      const sparkle = document.createElement('span');
+      sparkle.className = 'sparkle';
       
-      btn.addEventListener('touchend', function() {
-        setTimeout(() => {
-          this.style.transform = '';
-        }, 150);
-      });
+      // Posição aleatória
+      const x = Math.random() * 80 + 10;
+      const y = Math.random() * 80 + 10;
+      
+      sparkle.style.left = `${x}%`;
+      sparkle.style.top = `${y}%`;
+      
+      sparklesContainer.appendChild(sparkle);
+      
+      // Remover após animação
+      setTimeout(() => {
+        if (sparkle.parentNode) {
+          sparkle.remove();
+        }
+      }, 2000);
+    }
+  }, 800);
+}
+
+// Verificar se é dispositivo móvel
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+// Inicializar quando a página carregar
+document.addEventListener('DOMContentLoaded', function() {
+  // Criar partículas de fundo
+  createParticles();
+  
+  // Configurar efeitos do botão
+  setupButtonEffects();
+  
+  // Adicionar brilhos aleatórios
+  addRandomSparkles();
+  
+  // Otimizar para mobile
+  if (isMobile()) {
+    // Adicionar feedback tátil para mobile
+    const btn = document.querySelector('.telegram-btn');
+    
+    btn.addEventListener('touchstart', function() {
+      this.style.transform = 'scale(0.95)';
+    });
+    
+    btn.addEventListener('touchend', function() {
+      setTimeout(() => {
+        this.style.transform = '';
+      }, 200);
     });
   }
   
-  // Garantir autoplay do vídeo
+  // Garantir que o vídeo toque em mobile
   const video = document.querySelector('video');
   if (video) {
     const playPromise = video.play();
     if (playPromise !== undefined) {
       playPromise.catch(() => {
+        // Se autoplay for bloqueado, tentar com mute
         video.muted = true;
         video.play();
       });
     }
   }
   
-  // Adicionar efeito de digitação no título (opcional)
-  const title = document.querySelector('.title-text');
-  if (title && !title.dataset.animated) {
-    const originalText = title.textContent;
-    title.textContent = '';
-    title.dataset.animated = 'true';
+  // Adicionar estilos CSS dinâmicos
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-20px) rotate(90deg); }
+      50% { transform: translateY(0) rotate(180deg); }
+      75% { transform: translateY(20px) rotate(270deg); }
+    }
     
-    let i = 0;
-    const typeWriter = () => {
-      if (i < originalText.length) {
-        title.textContent += originalText.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-      }
-    };
-    
-    setTimeout(typeWriter, 1000);
-  }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 0.8; }
+    }
+  `;
+  document.head.appendChild(style);
 });
