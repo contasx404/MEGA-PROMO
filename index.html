@@ -1,74 +1,167 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thank You – Mega Promo</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#08060f">
+
+  <meta name="description" content="EL PROFESSOR — DIGITAL ORDERS. Thank you for your order. Contact our support team for confirmation and delivery assistance.">
+
+  <title>Order Confirmation | EL PROFESSOR</title>
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <div class="confetti-container"></div>
-  
-  <div class="container">
-    <div class="header-glow"></div>
-    
-    <!-- Container do vídeo -->
-    <div class="video-mega-promo">
-      <video autoplay muted loop playsinline>
-        <source src="videos/mega promo video.mp4" type="video/mp4">
-        Your browser does not support videos.
-      </video>
-      <div class="video-overlay"></div>
-    </div>
 
-    <h1 class="title">
-      <span class="title-text">🎉 Thank You for Your Purchase!</span>
-      <div class="title-shine"></div>
-    </h1>
+  <!-- Animated particles -->
+  <div class="confetti-container" aria-hidden="true"></div>
 
-    <p class="subtitle">
-      Your <strong class="highlight-text">MEGA PROMO PACKAGE</strong> is ready for delivery.
-    </p>
+  <main class="container">
 
-    <div class="buttons">
-      <a href="https://t.me/GetYourFoldersHere10_14"
-         target="_blank"
-         class="btn telegram premium-btn">
-        <div class="btn-inner">
-          <i class="fab fa-telegram-plane btn-icon"></i>
-          <span class="btn-text">Telegram Support</span>
-          <div class="btn-shine"></div>
-          <div class="btn-sparkle"></div>
-        </div>
-        <div class="btn-glow"></div>
-      </a>
+    <!-- Ambient purple glow -->
+    <div class="header-glow" aria-hidden="true"></div>
 
-      <!-- BOTÃO FUNCIONAL DIRETO PARA TELEGRAM -->
-      <a href="https://t.me/GetYourFoldersHere10_14?start=MegaPromo"
-         target="_blank"
-         class="btn get-package premium-btn pulse-animation">
-        <div class="btn-inner">
-          <i class="fas fa-gift btn-icon"></i>
-          <span class="btn-text">Get Your Package Now</span>
-          <div class="btn-shine"></div>
-          <div class="btn-sparkle"></div>
-        </div>
-        <div class="btn-glow"></div>
-      </a>
-    </div>
-
-    <p class="footer">
-      <i class="fas fa-headset"></i> If you have any questions, our support team is available 24/7.
-    </p>
-    
-    <div class="decoration">
+    <!-- Decorative stars -->
+    <div class="decoration" aria-hidden="true">
       <div class="star star-1"></div>
       <div class="star star-2"></div>
       <div class="star star-3"></div>
     </div>
-  </div>
+
+    <!-- Brand -->
+    <div class="brand">
+      EL PROFESSOR <span>· DIGITAL ORDERS</span>
+    </div>
+
+    <!-- Hero video -->
+    <div class="video-mega-promo">
+
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        webkit-playsinline
+        preload="metadata"
+        poster="images/order-confirmation.jpg"
+        aria-label="EL PROFESSOR digital orders cinematic animation"
+      >
+        <source
+          src="videos/el-professor-intro.mp4"
+          type="video/mp4"
+        >
+
+        Your browser does not support HTML video.
+      </video>
+
+      <div class="video-overlay" aria-hidden="true"></div>
+
+    </div>
+
+    <!-- Order status -->
+    <div class="status">
+      <span class="status-dot" aria-hidden="true"></span>
+      Order Received
+    </div>
+
+    <!-- Main heading -->
+    <h1 class="title">
+      <span class="title-text">
+        Thank You for Your <span class="accent">Order!</span>
+      </span>
+
+      <span class="title-shine" aria-hidden="true"></span>
+    </h1>
+
+    <!-- Confirmation message -->
+    <p class="subtitle">
+      Thank you for choosing
+      <strong class="highlight-text">EL PROFESSOR</strong>.
+
+      Your digital order has been received.
+      Contact our support team to confirm your order
+      and receive the next steps.
+    </p>
+
+    <!-- Action buttons -->
+    <div class="buttons">
+
+      <!-- Telegram support -->
+      <a
+        href="https://t.me/ELProfessorSupport24_7"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn telegram premium-btn"
+        aria-label="Contact EL PROFESSOR support on Telegram"
+      >
+
+        <span class="btn-glow" aria-hidden="true"></span>
+        <span class="btn-shine" aria-hidden="true"></span>
+
+        <span class="btn-inner">
+          <i
+            class="fab fa-telegram-plane btn-icon"
+            aria-hidden="true"
+          ></i>
+
+          <span class="btn-text">Contact Support</span>
+        </span>
+
+      </a>
+
+      <!-- Confirm order -->
+      <a
+        href="https://t.me/ELProfessorSupport24_7?text=Hi%2C%20I%27d%20like%20to%20confirm%20my%20order."
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn get-package premium-btn"
+        aria-label="Open Telegram to confirm your order"
+      >
+
+        <span class="btn-glow" aria-hidden="true"></span>
+        <span class="btn-shine" aria-hidden="true"></span>
+
+        <span class="btn-inner">
+          <i
+            class="fas fa-check-circle btn-icon"
+            aria-hidden="true"
+          ></i>
+
+          <span class="btn-text">Confirm My Order</span>
+        </span>
+
+      </a>
+
+    </div>
+
+    <!-- Support information -->
+    <p class="footer">
+      <i class="fas fa-headset" aria-hidden="true"></i>
+
+      Need help? Our support team is available to assist you.
+
+      <br>
+
+      <strong>@ELProfessorSupport24_7</strong>
+    </p>
+
+    <!-- Brand signature -->
+    <div class="footer-brand">
+      ORDER. <span>PAY.</span> DELIVER.
+    </div>
+
+  </main>
 
   <script src="script.js"></script>
+
 </body>
 </html>
