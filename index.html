@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08060f">
   <meta name="description" content="EL PROFESSOR DIGITAL ORDERS — Confirm your order and contact our support team.">
-
   <title>Order Confirmation | EL PROFESSOR</title>
 
+  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -16,11 +16,14 @@
     :root {
       --bg: #08060f;
       --surface: #100d1b;
+      --surface-light: #191329;
       --purple: #8b2cff;
       --purple-bright: #b44dff;
+      --violet: #6500ff;
       --silver: #e8e8f0;
       --muted: #aaa4bb;
-      --border: rgba(169, 93, 255, 0.28);
+      --border: rgba(169, 93, 255, .28);
+      --glow: rgba(139, 44, 255, .3);
     }
 
     * {
@@ -47,6 +50,10 @@
         var(--bg);
       color: var(--silver);
       font-family: Inter, Arial, Helvetica, sans-serif;
+    }
+
+    a {
+      color: inherit;
     }
 
     .container {
@@ -91,10 +98,11 @@
       color: var(--purple-bright);
     }
 
-    /* VIDEO: autoplay, muted, loop infinito e sem controlos */
+    /* Promo video */
     .video-mega-promo {
       position: relative;
       width: 100%;
+      max-height: 320px;
       margin: 0 auto 28px;
       overflow: hidden;
       background: #090610;
@@ -106,45 +114,22 @@
     .video-mega-promo video {
       display: block;
       width: 100%;
-      max-height: 360px;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
+      height: auto;
+      max-height: 320px;
+      object-fit: contain;
       background: #090610;
     }
 
     .video-overlay {
       position: absolute;
       inset: 0;
+      z-index: 1;
       pointer-events: none;
-      background: linear-gradient(180deg, transparent 60%, rgba(8, 6, 15, .35));
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      padding: 9px 14px;
-      color: #d7b6ff;
-      background: rgba(139, 44, 255, .10);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--purple-bright);
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--purple-bright);
-      animation: pulse 1.8s infinite;
+      background: linear-gradient(180deg, transparent 60%, rgba(8, 6, 15, .20));
     }
 
     .title {
+      position: relative;
       margin: 0 0 16px;
       font-size: clamp(25px, 5vw, 37px);
       font-weight: 850;
@@ -169,6 +154,30 @@
       color: var(--silver);
       font-weight: 800;
       letter-spacing: 1px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 9px 14px;
+      color: #d7b6ff;
+      background: rgba(139, 44, 255, .10);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: #b44dff;
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--purple-bright);
     }
 
     .buttons {
@@ -278,9 +287,22 @@
       animation: sparkle 3s ease-in-out infinite;
     }
 
-    .star-1 { top: 17%; left: 8%; }
-    .star-2 { top: 42%; right: 7%; animation-delay: 1s; }
-    .star-3 { bottom: 15%; left: 12%; animation-delay: 2s; }
+    .star-1 {
+      top: 17%;
+      left: 8%;
+    }
+
+    .star-2 {
+      top: 42%;
+      right: 7%;
+      animation-delay: 1s;
+    }
+
+    .star-3 {
+      bottom: 15%;
+      left: 12%;
+      animation-delay: 2s;
+    }
 
     .confetti-container {
       position: fixed;
@@ -290,27 +312,15 @@
       pointer-events: none;
     }
 
-    .confetti {
-      position: absolute;
-      top: -15px;
-      width: 7px;
-      height: 12px;
-      background: var(--purple-bright);
-      animation: fall 3.5s linear forwards;
-    }
-
     @keyframes sparkle {
-      0%, 100% { opacity: .25; transform: scale(.8); }
-      50% { opacity: 1; transform: scale(1.5); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: .45; }
-    }
-
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+      0%, 100% {
+        opacity: .25;
+        transform: scale(.8);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.5);
+      }
     }
 
     @media (min-width: 520px) {
@@ -326,18 +336,36 @@
     }
 
     @media (max-width: 480px) {
-      body { padding: 18px 12px; }
-      .container { padding: 22px 17px; border-radius: 19px; }
-      .brand { margin-bottom: 20px; letter-spacing: 3px; }
-      .subtitle { font-size: 14px; }
+      body {
+        padding: 18px 12px;
+      }
+
+      .container {
+        padding: 22px 17px;
+        border-radius: 19px;
+      }
+
+      .brand {
+        margin-bottom: 20px;
+        letter-spacing: 3px;
+      }
+
+      .video-mega-promo {
+        margin-bottom: 24px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
+      .star {
+        animation: none;
+      }
+
+      .btn {
+        transition: none;
       }
     }
   </style>
@@ -357,6 +385,7 @@
 
     <p class="brand">EL PROFESSOR <span>· DIGITAL ORDERS</span></p>
 
+    <!-- Existe apenas UM elemento video -->
     <div class="video-mega-promo">
       <video
         id="promoVideo"
@@ -364,12 +393,15 @@
         muted
         loop
         playsinline
+        webkit-playsinline
         preload="auto"
         disablepictureinpicture
+        controlslist="nodownload noplaybackrate noremoteplayback"
       >
-        <source src="mega%20promo%20video.mp4" type="video/mp4">
-        O teu navegador não suporta a reprodução deste vídeo.
+        <source src="./mega%20promo%20video.mp4" type="video/mp4">
+        Your browser does not support HTML video.
       </video>
+
       <div class="video-overlay" aria-hidden="true"></div>
     </div>
 
@@ -403,7 +435,7 @@
       </a>
 
       <a
-        href="https://t.me/ELProfessorSupport24_7"
+        href="https://t.me/ELProfessorSupport24_7?text=Hi%2C%20I%27d%20like%20to%20confirm%20my%20order."
         target="_blank"
         rel="noopener noreferrer"
         class="btn get-package"
@@ -427,71 +459,51 @@
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function () {
+    (() => {
       const video = document.getElementById("promoVideo");
 
-      if (video) {
-        video.muted = true;
-        video.loop = true;
-        video.autoplay = true;
-        video.removeAttribute("controls");
+      if (!video) return;
 
-        const playAttempt = video.play();
-        if (playAttempt && typeof playAttempt.catch === "function") {
-          playAttempt.catch(function () {
-            /* Alguns navegadores podem bloquear a reprodução automática. */
-          });
+      // Reforça a reprodução automática sem som.
+      video.autoplay = true;
+      video.muted = true;
+      video.defaultMuted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.removeAttribute("controls");
+
+      const tryPlay = () => {
+        if (video.paused) {
+          const attempt = video.play();
+
+          if (attempt && typeof attempt.catch === "function") {
+            attempt.catch(() => {
+              // O navegador pode bloquear o autoplay.
+              // A reprodução será tentada novamente quando a página
+              // voltar a ficar visível.
+            });
+          }
         }
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", tryPlay, { once: true });
+      } else {
+        tryPlay();
       }
 
-      const confettiContainer = document.querySelector(".confetti-container");
-      const colors = ["#8b2cff", "#b44dff", "#e8e8f0", "#6500ff"];
+      video.addEventListener("canplay", tryPlay);
 
-      function createConfetti() {
-        if (!confettiContainer) return;
-
-        for (let i = 0; i < 35; i++) {
-          const piece = document.createElement("span");
-          piece.className = "confetti";
-          piece.style.left = Math.random() * 100 + "vw";
-          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
-          piece.style.animationDelay = Math.random() * 1.5 + "s";
-          piece.style.animationDuration = (2.5 + Math.random() * 2) + "s";
-          confettiContainer.appendChild(piece);
-          piece.addEventListener("animationend", function () {
-            piece.remove();
-          });
-        }
-      }
-
-      createConfetti();
-
-      document.querySelectorAll(".btn").forEach(function (button) {
-        button.addEventListener("click", function (event) {
-          const ripple = document.createElement("span");
-          const rect = button.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-
-          ripple.style.cssText =
-            "position:absolute;width:" + size + "px;height:" + size +
-            "px;border-radius:50%;background:rgba(255,255,255,.22);" +
-            "transform:scale(0);animation:ripple .5s ease-out;pointer-events:none;" +
-            "left:" + (event.clientX - rect.left - size / 2) + "px;" +
-            "top:" + (event.clientY - rect.top - size / 2) + "px;";
-
-          button.appendChild(ripple);
-          setTimeout(function () {
-            ripple.remove();
-          }, 550);
-        });
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) tryPlay();
       });
 
-      const rippleStyle = document.createElement("style");
-      rippleStyle.textContent =
-        "@keyframes ripple{to{transform:scale(2);opacity:0}}";
-      document.head.appendChild(rippleStyle);
-    });
+      // Não adiciona controlos de reprodução visíveis.
+      video.controls = false;
+    })();
   </script>
+
+  <script src="script.js"></script>
 </body>
 </html>
 ```
