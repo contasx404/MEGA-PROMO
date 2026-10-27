@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,23 +9,18 @@
 
   <title>Order Confirmation | EL PROFESSOR</title>
 
-  <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     :root {
       --bg: #08060f;
       --surface: #100d1b;
-      --surface-light: #191329;
       --purple: #8b2cff;
       --purple-bright: #b44dff;
-      --violet: #6500ff;
       --silver: #e8e8f0;
       --muted: #aaa4bb;
       --border: rgba(169, 93, 255, 0.28);
-      --glow: rgba(139, 44, 255, 0.3);
     }
 
     * {
@@ -47,17 +42,11 @@
       justify-content: center;
       overflow-x: hidden;
       background:
-        radial-gradient(ellipse at 50% 10%,
-          rgba(101, 0, 255, 0.17), transparent 48%),
-        radial-gradient(ellipse at 90% 80%,
-          rgba(139, 44, 255, 0.10), transparent 38%),
+        radial-gradient(ellipse at 50% 10%, rgba(101, 0, 255, .17), transparent 48%),
+        radial-gradient(ellipse at 90% 80%, rgba(139, 44, 255, .10), transparent 38%),
         var(--bg);
       color: var(--silver);
       font-family: Inter, Arial, Helvetica, sans-serif;
-    }
-
-    a {
-      color: inherit;
     }
 
     .container {
@@ -68,16 +57,10 @@
       padding: 30px;
       overflow: hidden;
       text-align: center;
-      background: linear-gradient(
-        145deg,
-        rgba(25, 19, 41, 0.98),
-        rgba(10, 8, 17, 0.99) 70%
-      );
+      background: linear-gradient(145deg, rgba(25, 19, 41, .98), rgba(10, 8, 17, .99) 70%);
       border: 1px solid var(--border);
       border-radius: 24px;
-      box-shadow:
-        0 0 45px rgba(101, 0, 255, 0.10),
-        0 25px 80px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 0 45px rgba(101, 0, 255, .10), 0 25px 80px rgba(0, 0, 0, .45);
     }
 
     .header-glow {
@@ -89,7 +72,7 @@
       height: 190px;
       background: var(--purple);
       filter: blur(100px);
-      opacity: 0.24;
+      opacity: .24;
       pointer-events: none;
     }
 
@@ -102,42 +85,66 @@
       color: var(--silver);
     }
 
-    .brand span {
+    .brand span,
+    .title-text .accent,
+    .footer-brand span {
       color: var(--purple-bright);
     }
 
+    /* VIDEO: autoplay, muted, loop infinito e sem controlos */
     .video-mega-promo {
       position: relative;
       width: 100%;
-      max-height: 320px;
       margin: 0 auto 28px;
       overflow: hidden;
       background: #090610;
-      border: 1px solid rgba(180, 77, 255, 0.4);
+      border: 1px solid rgba(180, 77, 255, .4);
       border-radius: 16px;
-      box-shadow: 0 0 30px rgba(101, 0, 255, 0.13);
+      box-shadow: 0 0 30px rgba(101, 0, 255, .13);
     }
 
     .video-mega-promo video {
       display: block;
       width: 100%;
-      max-height: 320px;
+      max-height: 360px;
+      aspect-ratio: 16 / 9;
       object-fit: cover;
+      background: #090610;
     }
 
     .video-overlay {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(
-        180deg,
-        transparent 60%,
-        rgba(8, 6, 15, 0.35)
-      );
+      background: linear-gradient(180deg, transparent 60%, rgba(8, 6, 15, .35));
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 20px;
+      padding: 9px 14px;
+      color: #d7b6ff;
+      background: rgba(139, 44, 255, .10);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--purple-bright);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--purple-bright);
+      animation: pulse 1.8s infinite;
     }
 
     .title {
-      position: relative;
       margin: 0 0 16px;
       font-size: clamp(25px, 5vw, 37px);
       font-weight: 850;
@@ -147,11 +154,7 @@
 
     .title-text {
       color: #fff;
-      text-shadow: 0 0 24px rgba(180, 77, 255, 0.22);
-    }
-
-    .title-text .accent {
-      color: var(--purple-bright);
+      text-shadow: 0 0 24px rgba(180, 77, 255, .22);
     }
 
     .subtitle {
@@ -166,30 +169,6 @@
       color: var(--silver);
       font-weight: 800;
       letter-spacing: 1px;
-    }
-
-    .status {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 20px;
-      padding: 9px 14px;
-      color: #d7b6ff;
-      background: rgba(139, 44, 255, 0.10);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background: #b44dff;
-      border-radius: 50%;
-      box-shadow: 0 0 12px var(--purple-bright);
     }
 
     .buttons {
@@ -215,11 +194,8 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
-      letter-spacing: 0.4px;
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
+      letter-spacing: .4px;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
     .btn:hover {
@@ -238,17 +214,17 @@
     .get-package {
       color: #fff;
       background: linear-gradient(100deg, #6500ff, #a42bff);
-      box-shadow: 0 7px 26px rgba(101, 0, 255, 0.28);
+      box-shadow: 0 7px 26px rgba(101, 0, 255, .28);
     }
 
     .get-package:hover {
-      box-shadow: 0 8px 32px rgba(139, 44, 255, 0.48);
+      box-shadow: 0 8px 32px rgba(139, 44, 255, .48);
     }
 
     .telegram {
       color: var(--silver);
-      background: rgba(255, 255, 255, 0.025);
-      border-color: rgba(180, 77, 255, 0.45);
+      background: rgba(255, 255, 255, .025);
+      border-color: rgba(180, 77, 255, .45);
     }
 
     .telegram .btn-icon {
@@ -256,7 +232,7 @@
     }
 
     .telegram:hover {
-      background: rgba(139, 44, 255, 0.10);
+      background: rgba(139, 44, 255, .10);
       border-color: var(--purple-bright);
     }
 
@@ -284,10 +260,6 @@
       text-transform: uppercase;
     }
 
-    .footer-brand span {
-      color: var(--purple-bright);
-    }
-
     .decoration {
       position: absolute;
       inset: 0;
@@ -302,26 +274,13 @@
       height: 3px;
       background: #d5aaff;
       border-radius: 50%;
-      box-shadow: 0 0 12px 3px rgba(180, 77, 255, 0.4);
+      box-shadow: 0 0 12px 3px rgba(180, 77, 255, .4);
       animation: sparkle 3s ease-in-out infinite;
     }
 
-    .star-1 {
-      top: 17%;
-      left: 8%;
-    }
-
-    .star-2 {
-      top: 42%;
-      right: 7%;
-      animation-delay: 1s;
-    }
-
-    .star-3 {
-      bottom: 15%;
-      left: 12%;
-      animation-delay: 2s;
-    }
+    .star-1 { top: 17%; left: 8%; }
+    .star-2 { top: 42%; right: 7%; animation-delay: 1s; }
+    .star-3 { bottom: 15%; left: 12%; animation-delay: 2s; }
 
     .confetti-container {
       position: fixed;
@@ -331,15 +290,27 @@
       pointer-events: none;
     }
 
+    .confetti {
+      position: absolute;
+      top: -15px;
+      width: 7px;
+      height: 12px;
+      background: var(--purple-bright);
+      animation: fall 3.5s linear forwards;
+    }
+
     @keyframes sparkle {
-      0%, 100% {
-        opacity: 0.25;
-        transform: scale(0.8);
-      }
-      50% {
-        opacity: 1;
-        transform: scale(1.5);
-      }
+      0%, 100% { opacity: .25; transform: scale(.8); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .45; }
+    }
+
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
     }
 
     @media (min-width: 520px) {
@@ -355,37 +326,18 @@
     }
 
     @media (max-width: 480px) {
-      body {
-        padding: 18px 12px;
-      }
-
-      .container {
-        padding: 22px 17px;
-        border-radius: 19px;
-      }
-
-      .brand {
-        margin-bottom: 20px;
-        letter-spacing: 3px;
-      }
-
-      .video-mega-promo {
-        margin-bottom: 24px;
-      }
-
-      .subtitle {
-        font-size: 14px;
-      }
+      body { padding: 18px 12px; }
+      .container { padding: 22px 17px; border-radius: 19px; }
+      .brand { margin-bottom: 20px; letter-spacing: 3px; }
+      .subtitle { font-size: 14px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
+        transition-duration: .01ms !important;
       }
     }
   </style>
@@ -406,12 +358,17 @@
     <p class="brand">EL PROFESSOR <span>· DIGITAL ORDERS</span></p>
 
     <div class="video-mega-promo">
-      <video autoplay muted loop playsinline preload="metadata"
-             poster="">
-<video autoplay muted loop playsinline preload="auto">
-  <source src="mega%20promo%20video.mp4" type="video/mp4">
-  O teu navegador não suporta a reprodução deste vídeo.
-</video>
+      <video
+        id="promoVideo"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        disablepictureinpicture
+      >
+        <source src="mega%20promo%20video.mp4" type="video/mp4">
+        O teu navegador não suporta a reprodução deste vídeo.
       </video>
       <div class="video-overlay" aria-hidden="true"></div>
     </div>
@@ -446,7 +403,7 @@
       </a>
 
       <a
-        href="https://t.me/ELProfessorSupport24_7?text=Hi%2C%20I%27d%20like%20to%20confirm%20my%20order."
+        href="https://t.me/ELProfessorSupport24_7"
         target="_blank"
         rel="noopener noreferrer"
         class="btn get-package"
@@ -469,6 +426,72 @@
     </div>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const video = document.getElementById("promoVideo");
+
+      if (video) {
+        video.muted = true;
+        video.loop = true;
+        video.autoplay = true;
+        video.removeAttribute("controls");
+
+        const playAttempt = video.play();
+        if (playAttempt && typeof playAttempt.catch === "function") {
+          playAttempt.catch(function () {
+            /* Alguns navegadores podem bloquear a reprodução automática. */
+          });
+        }
+      }
+
+      const confettiContainer = document.querySelector(".confetti-container");
+      const colors = ["#8b2cff", "#b44dff", "#e8e8f0", "#6500ff"];
+
+      function createConfetti() {
+        if (!confettiContainer) return;
+
+        for (let i = 0; i < 35; i++) {
+          const piece = document.createElement("span");
+          piece.className = "confetti";
+          piece.style.left = Math.random() * 100 + "vw";
+          piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+          piece.style.animationDelay = Math.random() * 1.5 + "s";
+          piece.style.animationDuration = (2.5 + Math.random() * 2) + "s";
+          confettiContainer.appendChild(piece);
+          piece.addEventListener("animationend", function () {
+            piece.remove();
+          });
+        }
+      }
+
+      createConfetti();
+
+      document.querySelectorAll(".btn").forEach(function (button) {
+        button.addEventListener("click", function (event) {
+          const ripple = document.createElement("span");
+          const rect = button.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+
+          ripple.style.cssText =
+            "position:absolute;width:" + size + "px;height:" + size +
+            "px;border-radius:50%;background:rgba(255,255,255,.22);" +
+            "transform:scale(0);animation:ripple .5s ease-out;pointer-events:none;" +
+            "left:" + (event.clientX - rect.left - size / 2) + "px;" +
+            "top:" + (event.clientY - rect.top - size / 2) + "px;";
+
+          button.appendChild(ripple);
+          setTimeout(function () {
+            ripple.remove();
+          }, 550);
+        });
+      });
+
+      const rippleStyle = document.createElement("style");
+      rippleStyle.textContent =
+        "@keyframes ripple{to{transform:scale(2);opacity:0}}";
+      document.head.appendChild(rippleStyle);
+    });
+  </script>
 </body>
 </html>
+```
