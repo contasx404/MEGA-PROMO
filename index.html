@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#08060f">
   <meta name="description" content="EL PROFESSOR DIGITAL ORDERS — Confirm your order and contact our support team.">
   <title>Order Confirmation | EL PROFESSOR</title>
@@ -15,11 +15,14 @@
     :root {
       --bg: #08060f;
       --surface: #100d1b;
+      --surface-light: #191329;
       --purple: #8b2cff;
       --purple-bright: #b44dff;
+      --violet: #6500ff;
       --silver: #e8e8f0;
       --muted: #aaa4bb;
-      --border: rgba(169, 93, 255, .28);
+      --border: rgba(169, 93, 255, 0.28);
+      --glow: rgba(139, 44, 255, 0.3);
     }
 
     * {
@@ -41,8 +44,10 @@
       justify-content: center;
       overflow-x: hidden;
       background:
-        radial-gradient(ellipse at 50% 10%, rgba(101, 0, 255, .17), transparent 48%),
-        radial-gradient(ellipse at 90% 80%, rgba(139, 44, 255, .10), transparent 38%),
+        radial-gradient(ellipse at 50% 10%,
+          rgba(101, 0, 255, 0.17), transparent 48%),
+        radial-gradient(ellipse at 90% 80%,
+          rgba(139, 44, 255, 0.10), transparent 38%),
         var(--bg);
       color: var(--silver);
       font-family: Inter, Arial, Helvetica, sans-serif;
@@ -60,10 +65,16 @@
       padding: 30px;
       overflow: hidden;
       text-align: center;
-      background: linear-gradient(145deg, rgba(25, 19, 41, .98), rgba(10, 8, 17, .99) 70%);
+      background: linear-gradient(
+        145deg,
+        rgba(25, 19, 41, 0.98),
+        rgba(10, 8, 17, 0.99) 70%
+      );
       border: 1px solid var(--border);
       border-radius: 24px;
-      box-shadow: 0 0 45px rgba(101, 0, 255, .10), 0 25px 80px rgba(0, 0, 0, .45);
+      box-shadow:
+        0 0 45px rgba(101, 0, 255, 0.10),
+        0 25px 80px rgba(0, 0, 0, 0.45);
     }
 
     .header-glow {
@@ -75,7 +86,7 @@
       height: 190px;
       background: var(--purple);
       filter: blur(100px);
-      opacity: .24;
+      opacity: 0.24;
       pointer-events: none;
     }
 
@@ -85,6 +96,7 @@
       font-weight: 800;
       letter-spacing: 5px;
       text-transform: uppercase;
+      color: var(--silver);
     }
 
     .brand span,
@@ -93,16 +105,16 @@
       color: var(--purple-bright);
     }
 
-    /* VIDEO PROMOCIONAL */
+    /* VÍDEO PROMOCIONAL CORRIGIDO */
     .video-mega-promo {
       position: relative;
       width: 100%;
       margin: 0 auto 28px;
       overflow: hidden;
       background: #090610;
-      border: 1px solid rgba(180, 77, 255, .4);
+      border: 1px solid rgba(180, 77, 255, 0.4);
       border-radius: 16px;
-      box-shadow: 0 0 30px rgba(101, 0, 255, .13);
+      box-shadow: 0 0 30px rgba(101, 0, 255, 0.13);
       line-height: 0;
     }
 
@@ -114,13 +126,12 @@
       object-fit: contain;
       background: #090610;
       border: 0;
-      outline: 0;
-      pointer-events: none;
+      outline: none;
       -webkit-appearance: none;
       appearance: none;
     }
 
-    /* Tentar esconder os controlos do Safari no iPhone */
+    /* Ocultar controlos nativos quando o navegador permitir */
     .video-mega-promo video::-webkit-media-controls,
     .video-mega-promo video::-webkit-media-controls-panel,
     .video-mega-promo video::-webkit-media-controls-play-button,
@@ -128,16 +139,17 @@
     .video-mega-promo video::-webkit-media-controls-overlay-play-button {
       display: none !important;
       -webkit-appearance: none !important;
-      opacity: 0 !important;
-      width: 0 !important;
-      height: 0 !important;
     }
 
     .video-overlay {
       position: absolute;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(180deg, transparent 60%, rgba(8, 6, 15, .18));
+      background: linear-gradient(
+        180deg,
+        transparent 60%,
+        rgba(8, 6, 15, 0.35)
+      );
     }
 
     .title {
@@ -151,7 +163,7 @@
 
     .title-text {
       color: #fff;
-      text-shadow: 0 0 24px rgba(180, 77, 255, .22);
+      text-shadow: 0 0 24px rgba(180, 77, 255, 0.22);
     }
 
     .subtitle {
@@ -175,7 +187,7 @@
       margin-bottom: 20px;
       padding: 9px 14px;
       color: #d7b6ff;
-      background: rgba(139, 44, 255, .10);
+      background: rgba(139, 44, 255, 0.10);
       border: 1px solid var(--border);
       border-radius: 50px;
       font-size: 11px;
@@ -187,7 +199,7 @@
     .status-dot {
       width: 7px;
       height: 7px;
-      background: var(--purple-bright);
+      background: #b44dff;
       border-radius: 50%;
       box-shadow: 0 0 12px var(--purple-bright);
     }
@@ -215,8 +227,11 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 800;
-      letter-spacing: .4px;
-      transition: transform .2s ease, box-shadow .2s ease;
+      letter-spacing: 0.4px;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .btn:hover {
@@ -235,17 +250,26 @@
     .get-package {
       color: #fff;
       background: linear-gradient(100deg, #6500ff, #a42bff);
-      box-shadow: 0 7px 26px rgba(101, 0, 255, .28);
+      box-shadow: 0 7px 26px rgba(101, 0, 255, 0.28);
+    }
+
+    .get-package:hover {
+      box-shadow: 0 8px 32px rgba(139, 44, 255, 0.48);
     }
 
     .telegram {
       color: var(--silver);
-      background: rgba(255, 255, 255, .025);
-      border-color: rgba(180, 77, 255, .45);
+      background: rgba(255, 255, 255, 0.025);
+      border-color: rgba(180, 77, 255, 0.45);
     }
 
     .telegram .btn-icon {
       color: var(--purple-bright);
+    }
+
+    .telegram:hover {
+      background: rgba(139, 44, 255, 0.10);
+      border-color: var(--purple-bright);
     }
 
     .footer {
@@ -286,7 +310,7 @@
       height: 3px;
       background: #d5aaff;
       border-radius: 50%;
-      box-shadow: 0 0 12px 3px rgba(180, 77, 255, .4);
+      box-shadow: 0 0 12px 3px rgba(180, 77, 255, 0.4);
       animation: sparkle 3s ease-in-out infinite;
     }
 
@@ -307,11 +331,20 @@
       animation-delay: 2s;
     }
 
+    .confetti-container {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
     @keyframes sparkle {
       0%, 100% {
-        opacity: .25;
-        transform: scale(.8);
+        opacity: 0.25;
+        transform: scale(0.8);
       }
+
       50% {
         opacity: 1;
         transform: scale(1.5);
@@ -353,10 +386,22 @@
         font-size: 14px;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      .star {
+        animation: none;
+      }
+
+      .btn {
+        transition: none;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <div class="confetti-container" aria-hidden="true"></div>
+
   <main class="container">
     <div class="header-glow" aria-hidden="true"></div>
 
@@ -366,9 +411,11 @@
       <div class="star star-3"></div>
     </div>
 
-    <p class="brand">EL PROFESSOR <span>· DIGITAL ORDERS</span></p>
+    <p class="brand">
+      EL PROFESSOR <span>· DIGITAL ORDERS</span>
+    </p>
 
-    <!-- VÍDEO: apenas uma tag video, sem controls -->
+    <!-- VÍDEO: uma única tag, sem botão de controlos -->
     <div class="video-mega-promo">
       <video
         id="promoVideo"
@@ -380,11 +427,13 @@
         preload="auto"
         disablepictureinpicture
         disableremoteplayback
-        tabindex="-1"
-        aria-label="Vídeo promocional"
+        aria-label="EL PROFESSOR promotional video"
       >
-        <source src="./mega%20promo%20video.mp4" type="video/mp4">
-        O teu navegador não suporta este vídeo.
+        <source
+          src="./mega%20promo%20video.mp4"
+          type="video/mp4"
+        >
+        O teu navegador não suporta a reprodução deste vídeo.
       </video>
 
       <div class="video-overlay" aria-hidden="true"></div>
@@ -413,6 +462,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="btn telegram"
+        aria-label="Contact EL PROFESSOR support on Telegram"
       >
         <i class="fab fa-telegram-plane btn-icon" aria-hidden="true"></i>
         <span>Contact Support</span>
@@ -423,6 +473,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="btn get-package"
+        aria-label="Confirm your order through Telegram"
       >
         <i class="fas fa-check-circle btn-icon" aria-hidden="true"></i>
         <span>Confirm My Order</span>
@@ -442,11 +493,12 @@
   </main>
 
   <script>
-    (() => {
+    (function () {
       const video = document.getElementById("promoVideo");
+
       if (!video) return;
 
-      // Silenciar antes de tentar iniciar: requisito importante para autoplay no iPhone.
+      // Preparar o vídeo para reprodução automática sem som.
       video.muted = true;
       video.defaultMuted = true;
       video.autoplay = true;
@@ -454,45 +506,42 @@
       video.playsInline = true;
 
       video.setAttribute("muted", "");
-      video.setAttribute("autoplay", "");
-      video.setAttribute("loop", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
       video.removeAttribute("controls");
 
-      function startVideo() {
+      function playVideo() {
         if (document.hidden) return;
 
-        const playPromise = video.play();
+        video.muted = true;
 
-        if (playPromise && typeof playPromise.catch === "function") {
-          playPromise.catch(() => {
-            // O Safari pode bloquear autoplay conforme as definições do dispositivo.
+        const result = video.play();
+
+        if (result && typeof result.catch === "function") {
+          result.catch(function () {
+            // O Safari pode bloquear o autoplay pelas definições do dispositivo.
           });
         }
       }
 
       if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", startVideo, {
+        document.addEventListener("DOMContentLoaded", playVideo, {
           once: true
         });
       } else {
-        startVideo();
+        playVideo();
       }
 
-      video.addEventListener("loadedmetadata", startVideo);
-      video.addEventListener("canplay", startVideo);
-      video.addEventListener("playing", () => {
-        video.classList.add("is-playing");
-      });
+      video.addEventListener("loadeddata", playVideo);
+      video.addEventListener("canplay", playVideo);
 
-      document.addEventListener("visibilitychange", () => {
+      document.addEventListener("visibilitychange", function () {
         if (!document.hidden && video.paused) {
-          startVideo();
+          playVideo();
         }
       });
 
-      window.addEventListener("pageshow", startVideo);
+      window.addEventListener("pageshow", playVideo);
     })();
   </script>
 
